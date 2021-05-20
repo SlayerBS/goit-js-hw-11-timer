@@ -5,11 +5,6 @@ const refs = {
   daysField: document.querySelector('[data-value="days"]'),
 };
 
-setDate = function (year, month, day) {
-  targetDate = new Date(year, month, day);
-  return targetDate;
-};
-
 getNumbers = function (time) {
   const days = Math.floor(time / (1000 * 60 * 60 * 24));
   const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -17,6 +12,12 @@ getNumbers = function (time) {
   const secs = Math.floor((time % (1000 * 60)) / 1000);
   return [days, hours, mins, secs];
 };
+
+setDate = function (year, month, day) {
+  return new Date(year, month, day);
+};
+
+const targetDate = setDate(2022, 01, 02);
 
 timerId = setInterval(() => {
   const time = targetDate - new Date();
@@ -27,10 +28,3 @@ timerId = setInterval(() => {
   refs.hoursField.innerText = numbers[1];
   refs.daysField.innerText = numbers[0];
 }, 1000);
-
-setDate = function (year, month, day) {
-  const targetDate = new Date(year, month, day);
-  return targetDate;
-};
-
-const targetDate = setDate(2022, 01, 02);
