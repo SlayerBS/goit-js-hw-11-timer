@@ -1,0 +1,30 @@
+.timer {
+  display: inline-flex;
+  background-color: #f0f2f1;
+  padding: 20px;
+}
+
+.field {
+  display: block;
+  width: 200 px;
+  padding: 5px;
+  margin: 10px;
+  background-color: #3e403e;
+  border-radius: 10px;
+}
+
+.value {
+  font-family: 'Raleway', sans-serif;
+  font-size: 40px;
+  display: block;
+  text-align: center;
+  margin: 20 px;
+  color: #f8f5f5;
+}
+
+.label {
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  color: #b9baba;
+  padding: 10px;
+}
