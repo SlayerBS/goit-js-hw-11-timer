@@ -12,22 +12,29 @@ class CountdownTimer {
   }
 
   start() {
-    this.timerId = setInterval(() => {
-      const time = this.targetDate - new Date();
-      const numbers = this.getNumbers(time);
-      refs.secondsField.innerText = numbers[3];
-      refs.minutesField.innerText = numbers[2];
-      refs.hoursField.innerText = numbers[1];
-      refs.daysField.innerText = numbers[0];
-    }, 1000);
+    this.setDate();
+    this.timerId = setInterval(() => this.setDate(), 1000);
   }
+
+  setDate = () => {
+    const time = this.targetDate - new Date();
+    const numbers = this.getNumbers(time);
+    this.displayNumbers(numbers);
+  };
+
+  displayNumbers = number => {
+    refs.secondsField.innerText = number.secs;
+    refs.minutesField.innerText = number.mins;
+    refs.hoursField.innerText = number.hours;
+    refs.daysField.innerText = number.days;
+  };
 
   getNumbers = time => {
     const days = Math.floor(time / (1000 * 60 * 60 * 24));
     const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const mins = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
     const secs = Math.floor((time % (1000 * 60)) / 1000);
-    return [days, hours, mins, secs];
+    return { days, hours, mins, secs };
   };
 }
 
